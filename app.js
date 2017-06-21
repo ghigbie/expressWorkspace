@@ -5,12 +5,14 @@ const app = express();
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);
 
-app.get('/', (req, res) =>{
-    console.log(`GET the homepage`);
-    res
-     .status(200)
-     .sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/', (req, res) =>{
+//     console.log(`GET the homepage`);
+//     res
+//      .status(200)
+//      .sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
 app.get('/json', (req, res) => {
    console.log('GET the json');
