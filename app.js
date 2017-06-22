@@ -5,7 +5,7 @@ const app = express();
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // app.get('/', (req, res) =>{
 //     console.log(`GET the homepage`);
