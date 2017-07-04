@@ -1,15 +1,19 @@
 const express = require("express");
+var path = require("path");
 const app = express();
 
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);
 
-app.get('/', (req, res) => {
-    console.log(`GET the homepage`);
-    res
-        .status(200)
-        .send("<h1>Home page!!!</h1>");
-});
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// app.get('/', (req, res) => {
+//     console.log(`GET the homepage`);
+//     res
+//         .status(200)
+//         .sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
 
 app.get('/json', (req, res) => {
     console.log(`GET the json`);
@@ -17,6 +21,14 @@ app.get('/json', (req, res) => {
         .status(200)
         .json({"jsonData": true});
 });
+
+app.get('/file', (req, res) => {
+    console.log('GET the file');
+    res
+        .status(200)
+        .sendFile(path.join(__dirname, 'app-two.js'));
+});
+
 
 var server = app.listen(app.get('port'), app.get('ip'), () => {
     var port = server.address().port;
