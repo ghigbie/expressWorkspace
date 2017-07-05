@@ -8,6 +8,12 @@ router
        res
         .status(200)
         .json({"jsonData" : true});
+    })
+    .post( (req, res) => {
+        console.log("POST the json route");
+        res
+         .status(200)
+         .json({"jsonData" : "POST received"});
     });
 
 module.exports = router;

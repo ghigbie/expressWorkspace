@@ -2,6 +2,8 @@ const express = require("express");
 var path = require("path");
 const app = express();
 
+const routes = require("./routes");
+
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);
 
@@ -12,6 +14,7 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use('/api', routes);
 
 // app.get('/', (req, res) => {
 //     console.log(`GET the homepage`);
