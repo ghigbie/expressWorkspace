@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-const routes = require("./routes");
+const routes = require("./api/routes");
 
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);

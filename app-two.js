@@ -2,7 +2,7 @@ const express = require("express");
 var path = require("path");
 const app = express();
 
-const routes = require("./routes");
+const routes = require("./api/routes");
 
 app.set('port', process.env.PORT);
 app.set('ip', process.env.IP);
@@ -24,7 +24,7 @@ app.use('/api', routes);
 // });
 
 app.get('/json', (req, res) => {
-    console.log(`GET the json`);
+    console.log('GET the json');
     res
         .status(200)
         .json({"jsonData": true});

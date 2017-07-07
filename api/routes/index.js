@@ -1,19 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-router
-    .route("/json")
-    .get( (req, res) => {
-       console.log("GET the json");
-       res
-        .status(200)
-        .json({"jsonData" : true});
-    })
-    .post( (req, res) => {
-        console.log("POST the json route");
-        res
-         .status(200)
-         .json({"jsonData" : "POST received"});
-    });
+const ctrlHotels = require('../controllers/hotelsController.js');
 
+router
+    .route("/hotels")
+    .get( ctrlHotels.hotelsGetAll());
+    
 module.exports = router;
